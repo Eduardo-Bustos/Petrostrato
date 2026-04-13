@@ -1,0 +1,51 @@
+app:
+  name: "PetroStratum"
+  stage: "Stage 8"
+  timezone: "UTC"
+  refresh_seconds: 60
+
+market:
+  assets:
+    brent: "BZ=F"
+    wti: "CL=F"
+    gold: "GC=F"
+    natgas: "NG=F"
+    spx: "^GSPC"
+    vix: "^VIX"
+    dxy: "DX-Y.NYB"
+  history_period: "5d"
+  interval: "1m"
+
+stratum:
+  thresholds:
+    sg_fragile: 0.40
+    sg_transmission: 0.70
+    cp_high: 0.70
+    theta_low: 0.35
+    contagion_peak_high: 3.0
+  defaults:
+    sg: 0.55
+    cp: 0.60
+    theta_eff: 0.40
+    divergence: 0.20
+
+telegram:
+  enabled: true
+  bot_token: "REPLACE_WITH_TELEGRAM_BOT_TOKEN"
+  chat_id: "REPLACE_WITH_CHAT_ID"
+  parse_mode: "Markdown"
+  send_startup_message: false
+
+alerts:
+  enable_console: true
+  enable_telegram: true
+  deduplicate_minutes: 30
+  severity_levels:
+    critical: "CRITICAL"
+    high: "HIGH"
+    medium: "MEDIUM"
+    info: "INFO"
+
+logging:
+  level: "INFO"
+  file: "stratum.log"
